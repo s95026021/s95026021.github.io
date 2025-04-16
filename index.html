@@ -154,6 +154,37 @@
             border-radius: 6px;
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            color: #333;
+            cursor: pointer;
+        }
+
         footer {
             background-color: var(--dark);
             color: white;
@@ -177,13 +208,11 @@
     <main>
         <section id="about" class="about">
             <div class="profile-photo">
-                <img src="xxx" alt="Profile Photo">
+                <img src="gra_pic.png" alt="Profile Photo">
             </div>
             <div class="about-content">
                 <h2>About Me</h2>
                 <p><strong>Sheng Hsiang Yang</strong>, graduate student at National Taipei University in Information Management. Passionate about tech, AI, and fitness.</p>
-                <p>Projects I've worked on include AI cancer detection, traffic bots, cross-cultural LLM agents, and IT infrastructure design for retail.</p>
-                <p>Let’s create meaningful digital experiences.</p>
             </div>
         </section>
 
@@ -193,28 +222,24 @@
                 <div class="project-card">
                     <img src="gra_pic.png" alt="Project 1">
                     <div class="project-info">
-                        <h3>Breast Cancer Detection</h3>
-                        <p>Deep learning for X-ray breast cancer diagnostics using PyTorch and VB.NET.</p>
+                        <h3>癌 - 乳在哪裡</h3>
                         <div class="project-tags">
                             <span class="tag">PyTorch</span><span class="tag">VB.NET</span><span class="tag">MySQL</span>
                         </div>
                         <div class="project-links">
-                            <a href="#">Details</a>
-                            <a href="#">GitHub</a>
+                            <a href="javascript:void(0)" onclick="openModal('modal1')">Details</a>
                         </div>
                     </div>
                 </div>
                 <div class="project-card">
-                    <img src="aI_bot.png" alt="Project 2">
+                    <img src="al_bot.png" alt="Project 2">
                     <div class="project-info">
-                        <h3>Smart Traffic Bot</h3>
-                        <p>LINE Bot + NLP + TDX API for real-time smart city traffic queries.</p>
+                        <h3>智慧交通語言查詢代理系統</h3>
                         <div class="project-tags">
                             <span class="tag">Python</span><span class="tag">NLP</span>
                         </div>
                         <div class="project-links">
-                            <a href="#">Details</a>
-                            <a href="#">GitHub</a>
+                            <a href="javascript:void(0)" onclick="openModal('modal2')">Details</a>
                         </div>
                     </div>
                 </div>
@@ -222,13 +247,11 @@
                     <img src="CroissantGPT_logo.png" alt="Project 3">
                     <div class="project-info">
                         <h3>CroissantGPT</h3>
-                        <p>Cross-cultural assistant for translation and local travel guide via LLM.</p>
                         <div class="project-tags">
                             <span class="tag">Python</span><span class="tag">GPT-4o-mini</span>
                         </div>
                         <div class="project-links">
-                            <a href="#">Details</a>
-                            <a href="#">GitHub</a>
+                            <a href="javascript:void(0)" onclick="openModal('modal3')">Details</a>
                         </div>
                     </div>
                 </div>
@@ -242,8 +265,41 @@
         </section>
     </main>
 
+    <!-- Modals -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h3>癌 - 乳在哪裡</h3>
+            <p>本專題致力於透過深度學習技術協助醫療影像診斷，以乳癌X光攝影為資料來源，建構一套能夠自動判別乳癌影像等級的輔助診斷系統...</p>
+        </div>
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal2')">&times;</span>
+            <h3>智慧交通語言查詢代理系統</h3>
+            <p>本專案於開發一套基於大型語言模型與LINE Bot平台的智慧交通查詢系統，結合NLP與TDX API，以對話方式查詢路況，提升資訊可進性。</p>
+        </div>
+    </div>
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal3')">&times;</span>
+            <h3>CroissantGPT</h3>
+            <p>CroissantGPT 是一款設計給國際學生與外籍人士使用的對話型智慧助理，能提供中英法即時翻譯、旅遊推薦、文化社交指南等實用服務。</p>
+        </div>
+    </div>
+
     <footer>
         <p>&copy; 2025 Frank Yang. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+    </script>
 </body>
 </html>
