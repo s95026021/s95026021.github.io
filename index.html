@@ -3,437 +3,247 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Website</title>
+    <title>Frank Yang | Personal Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Global styles */
+        :root {
+            --primary: #3498db;
+            --dark: #2c3e50;
+            --light-bg: #f5f5f5;
+            --white: #ffffff;
+            --gray: #666;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
-        
+
         body {
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light-bg);
+            color: var(--dark);
             line-height: 1.6;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
         }
-        
-        /* Navigation bar */
+
         header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 20px 0;
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 20px;
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-        
+
         nav {
+            max-width: 1200px;
+            margin: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-        
+
         .nav-links {
             display: flex;
             list-style: none;
         }
-        
+
         .nav-links li {
             margin-left: 30px;
         }
-        
+
         .nav-links a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #3498db;
-        }
-        
-        /* Language switcher */
-        .language-switch {
-            background-color: #3498db;
             color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background-color 0.3s;
+            font-weight: 500;
         }
-        
-        .language-switch:hover {
-            background-color: #2980b9;
-        }
-        
-        /* Main content area */
+
         main {
-            margin-top: 80px;
-            padding: 50px 0;
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
         }
-        
-        section {
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+        }
+
+        .about, .projects {
             margin-bottom: 60px;
         }
-        
-        h2 {
-            font-size: 32px;
-            margin-bottom: 30px;
-            color: #2c3e50;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 60px;
-            height: 4px;
-            background-color: #3498db;
-        }
-        
-        /* About section */
+
         .about {
             display: flex;
-            align-items: center;
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-        
-        .profile-photo {
-            flex: 0 0 300px;
-            max-width: 300px;
-            overflow: hidden;
-        }
-        
+
         .profile-photo img {
             width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.3s;
+            max-width: 300px;
+            border-radius: 12px;
+            margin-right: 30px;
         }
-        
-        .profile-photo img:hover {
-            transform: scale(1.05);
-        }
-        
+
         .about-content {
             flex: 1;
-            padding: 30px;
         }
-        
-        .about-content h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #2c3e50;
-        }
-        
-        .social-links {
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            display: inline-block;
-            margin-right: 15px;
-            color: #3498db;
-            font-size: 18px;
-            text-decoration: none;
-        }
-        
-        /* Projects section */
-        .projects {
+
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
-        
+
         .project-card {
-            background-color: #fff;
+            background-color: white;
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .project-image {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .project-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
             transition: transform 0.3s;
         }
-        
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
+
+        .project-card:hover {
+            transform: translateY(-5px);
         }
-        
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
         .project-info {
             padding: 20px;
         }
-        
-        .project-info h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        
-        .project-info p {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        
+
         .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
+            margin: 10px 0;
         }
-        
+
         .tag {
-            background-color: #e0f7fa;
-            color: #0097a7;
-            padding: 5px 10px;
+            display: inline-block;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+            padding: 4px 10px;
+            margin-right: 6px;
             border-radius: 20px;
             font-size: 12px;
-            margin-right: 8px;
-            margin-bottom: 8px;
         }
-        
+
         .project-links a {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: #3498db;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
+            margin-right: 10px;
             font-size: 14px;
-            transition: background-color 0.3s;
+            background-color: var(--primary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 6px;
         }
-        
-        .project-links a:hover {
-            background-color: #2980b9;
-        }
-        
-        /* Footer */
+
         footer {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 30px 0;
+            background-color: var(--dark);
+            color: white;
             text-align: center;
-        }
-        
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        
-        .footer-links {
-            margin: 20px 0;
-        }
-        
-        .footer-links a {
-            color: #fff;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-        
-        .copyright {
-            margin-top: 20px;
-            color: #bdc3c7;
-            font-size: 14px;
-        }
-        
-        /* Responsive design */
-        @media (max-width: 992px) {
-            .about {
-                flex-direction: column;
-            }
-            
-            .profile-photo {
-                max-width: 100%;
-                flex: 0 0 100%;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .projects {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
+            padding: 30px 0;
         }
     </style>
 </head>
 <body>
-    <!-- Navigation bar -->
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">My Personal Website</div>
-                <ul class="nav-links">
-                    <li><a href="#about">About Me</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><button class="language-switch" onclick="window.location.href='index.html'">中文</button></li>
-                </ul>
-            </nav>
-        </div>
+        <nav>
+            <div class="logo">Frank Yang</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Main content area -->
-    <main class="container">
-        <!-- About section -->
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="about">
-                <div class="profile-photo">
-                    <img src="images/profile.jpg" alt="Personal Photo">
-                </div>
-                <div class="about-content">
-                    <h3>Sheng Hsiang Yang (Frank Yang)</h3>
-                    <p>Hello! I'm Sheng Hsiang Yang, a graduate student at the <strong>Graduate Institute of Information Management, National Taipei University</strong>. I'm both a tech enthusiast and a fitness lover—welcome to my personal website.</p>
-                    <p>Over the past few years, I've participated in the development of several projects, including:</p>
-                    <ul style="margin-left: 20px; margin-bottom: 15px;">
-                        <li><strong>AI-powered breast cancer image recognition using computer vision</strong>,</li>
-                        <li><strong>A conversational bot for real-time traffic condition responses</strong>,</li>
-                        <li><strong>A language and cultural exchange assistant using large language models for international students</strong>, and</li>
-                        <li><strong>Network management and wiring layout design for a well-known retail company</strong>.</li>
-                    </ul>
-                    <p>I believe technology and communication have the power to change the world, and I am committed to creating meaningful and impactful digital solutions.</p>
-                    <p>Outside of tech, I'm passionate about <strong>fitness, gaming, and music</strong>—activities that help me stay creative and inspired.</p>
-                    
-                    <div class="social-links">
-                        <a href="https://github.com/s95026021/frank.github.io.git" target="_blank">GitHub</a>
-                        <a href="mailto:s9502620@gmail.com">Email</a>
-                    </div>
-                </div>
+    <main>
+        <section id="about" class="about">
+            <div class="profile-photo">
+                <img src="gra_pic.png" alt="Profile Photo">
+            </div>
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p><strong>Sheng Hsiang Yang</strong>, graduate student at National Taipei University in Information Management. Passionate about tech, AI, and fitness.</p>
+                <p>Projects I've worked on include AI cancer detection, traffic bots, cross-cultural LLM agents, and IT infrastructure design for retail.</p>
+                <p>Let’s create meaningful digital experiences.</p>
             </div>
         </section>
 
-        <!-- Projects section -->
         <section id="projects">
             <h2>Projects</h2>
-            <div class="projects">
-                <!-- Project 1 -->
+            <div class="projects-grid">
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="gra_pic.png" alt="Graph Picture" width="300">
-                    </div>
+                    <img src="gra_pic.png" alt="Project 1">
                     <div class="project-info">
-                        <h3>Thesis Project: Where is the Breast Cancer? - Using Deep Learning to Detect and Diagnose Breast Cancer Images</h3>
-                        <p>Using deep learning technology to assist medical image diagnosis, with breast cancer X-ray photography as the data source, to build an auxiliary diagnostic system that can automatically judge the grade of breast cancer images.</p>
+                        <h3>Breast Cancer Detection</h3>
+                        <p>Deep learning for X-ray breast cancer diagnostics using PyTorch and VB.NET.</p>
                         <div class="project-tags">
-                            <span class="tag">PyTorch</span>
-                            <span class="tag">VB.NET</span>
-                            <span class="tag">MySQL</span>
+                            <span class="tag">PyTorch</span><span class="tag">VB.NET</span><span class="tag">MySQL</span>
                         </div>
                         <div class="project-links">
-                            <a href="projects/project1" target="_blank">View Details</a>
-                            <a href="https://github.com/您的帳號/project1" target="_blank">GitHub</a>
+                            <a href="#">Details</a>
+                            <a href="#">GitHub</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 2 -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="aI_bot.png" alt="AI Bot" width="300">
-                    </div>
+                    <img src="al_bot.png" alt="Project 2">
                     <div class="project-info">
-                        <h3>Application of Large Language Models in Intelligent Traffic Query Agents for Smart City Traffic Management</h3>
-                        <p>Developed a smart traffic query system based on Large Language Models (LLMs) and LINE Bot platform, combining Natural Language Processing (NLP) and TDX traffic data API to help people query real-time traffic conditions through conversation, improving the accessibility and response speed of traffic information in smart cities.</p>
+                        <h3>Smart Traffic Bot</h3>
+                        <p>LINE Bot + NLP + TDX API for real-time smart city traffic queries.</p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">GPT-4o-mini API</span>
+                            <span class="tag">Python</span><span class="tag">NLP</span>
                         </div>
                         <div class="project-links">
-                            <a href="projects/project2" target="_blank">View Details</a>
-                            <a href="https://github.com/您的帳號/project2" target="_blank">GitHub</a>
+                            <a href="#">Details</a>
+                            <a href="#">GitHub</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Project 3 -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="CroissantGPT_logo.png" alt="CroissantGPT logo" width="300">
-                    </div>
+                    <img src="CroissantGPT_logo.png" alt="Project 3">
                     <div class="project-info">
                         <h3>CroissantGPT</h3>
-                        <p>CroissantGPT is a cross-cultural intelligent assistant that provides real-time translation, travel recommendations, and cultural guidance to help international people adapt to local life.</p>
+                        <p>Cross-cultural assistant for translation and local travel guide via LLM.</p>
                         <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">GPT-4o-mini API</span>
-                            <span class="tag">HTML</span>
+                            <span class="tag">Python</span><span class="tag">GPT-4o-mini</span>
                         </div>
                         <div class="project-links">
-                            <a href="projects/project3" target="_blank">View Details</a>
-                            <a href="https://github.com/您的帳號/project3" target="_blank">GitHub</a>
+                            <a href="#">Details</a>
+                            <a href="#">GitHub</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact section -->
         <section id="contact">
-            <h2>Contact Me</h2>
-            <p>If you are interested in my work or have any cooperation opportunities, please contact me through the following ways:</p>
-            <ul style="list-style-type: none; margin-top: 20px;">
-                <li><strong>Email:</strong> s9502620@gmail.com</li>
-                <li><strong>GitHub:</strong> <a href="https://github.com/s95026021/frank.github.io.git" target="_blank">@s95026021</a></li>
-            </ul>
+            <h2>Contact</h2>
+            <p>Email: <a href="mailto:s9502620@gmail.com">s9502620@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/s95026021" target="_blank">@s95026021</a></p>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="logo">My Personal Website</div>
-                <div class="footer-links">
-                    <a href="#about">About Me</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#contact">Contact</a>
-                </div>
-                <div class="copyright">
-                    &copy; 2025 Frank Yang. All Rights Reserved.
-                </div>
-            </div>
-        </div>
+        <p>&copy; 2025 Frank Yang. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
