@@ -7,6 +7,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
+     .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.7);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .modal-content {
+        background-color: white;
+        margin: 10% auto;
+        padding: 20px;
+        border-radius: 10px;
+        width: 80%;
+        max-width: 600px;
+        position: relative;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* 針對手機版的調整 */
+    @media (max-width: 768px) {
+        .modal-content {
+            margin: 20% auto;
+            width: 90%;
+        }
+    }
         :root {
             --primary: #3498db;
             --dark: #2c3e50;
@@ -395,6 +433,23 @@ Besides work, I enjoy fitness, gaming, and music, which inspire my creativity
     </footer>
 
     <script>
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = "none";
+    }
+
+    // 點擊modal外部區域關閉modal
+    window.onclick = function(event) {
+        const modals = document.getElementsByClassName('modal');
+        for (let i = 0; i < modals.length; i++) {
+            if (event.target == modals[i]) {
+                modals[i].style.display = "none";
+            }
+        }
+    }
         function switchLang(lang) {
             const elements = document.querySelectorAll('[data-en]');
             elements.forEach(el => {
