@@ -50,6 +50,18 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #menu-toggle {
+            display: none;
         }
 
         .nav-links {
@@ -73,6 +85,33 @@
             border: 1px solid white;
             padding: 5px 10px;
             border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #2c3e50;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                z-index: 999;
+            }
+
+            #menu-toggle:checked + .menu-icon + .nav-links {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                text-align: right;
+                padding: 10px;
+            }
         }
 
         .hidden { display: none; }
@@ -165,37 +204,6 @@
             border-radius: 6px;
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 600px;
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 28px;
-            color: #333;
-            cursor: pointer;
-        }
-
         footer {
             background-color: var(--dark);
             color: white;
@@ -208,17 +216,19 @@
     <header>
         <nav>
             <div class="logo">Frank Yang</div>
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="menu-icon">☰</label>
             <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#about" data-en="About" data-zh="關於我">About</a></li>
+                <li><a href="#projects" data-en="Projects" data-zh="專案">Projects</a></li>
+                <li><a href="#contact" data-en="Contact" data-zh="聯絡我">Contact</a></li>
                 <li><button class="lang-switch" onclick="switchLang('en')">EN</button></li>
                 <li><button class="lang-switch" onclick="switchLang('zh')">中文</button></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+   <main>
         <section id="about" class="about">
             <div class="profile-photo">
                 <img src="profile.jpg" alt="Profile Photo">
@@ -322,19 +332,20 @@ Besides work, I enjoy fitness, gaming, and music, which inspire my creativity
     </footer>
 
     <script>
-        function openModal(id) {
-            document.getElementById(id).style.display = 'flex';
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).style.display = 'none';
-        }
-
         function switchLang(lang) {
             const elements = document.querySelectorAll('[data-en]');
             elements.forEach(el => {
                 el.textContent = el.getAttribute(`data-${lang}`);
             });
+        }
+
+        window.onload = function () {
+            const userLang = navigator.language || navigator.userLanguage;
+            if (userLang.startsWith('zh')) {
+                switchLang('zh');
+            } else {
+                switchLang('en');
+            }
         }
     </script>
 </body>
