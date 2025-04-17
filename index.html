@@ -7,44 +7,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-     .modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0,0,0,0.7);
-        z-index: 1000;
-        overflow-y: auto;
-    }
-
-    .modal-content {
-        background-color: white;
-        margin: 10% auto;
-        padding: 20px;
-        border-radius: 10px;
-        width: 80%;
-        max-width: 600px;
-        position: relative;
-    }
-
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 20px;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-    }
-
-    /* 針對手機版的調整 */
-    @media (max-width: 768px) {
-        .modal-content {
-            margin: 20% auto;
-            width: 90%;
-        }
-    }
         :root {
             --primary: #3498db;
             --dark: #2c3e50;
@@ -52,25 +14,21 @@
             --white: #ffffff;
             --gray: #666;
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', sans-serif;
         }
-
         body {
             background-color: var(--light-bg);
             color: var(--dark);
             line-height: 1.6;
         }
-
         a {
             text-decoration: none;
             color: var(--primary);
         }
-
         header {
             background-color: var(--dark);
             color: var(--white);
@@ -81,96 +39,55 @@
             z-index: 100;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
-
         nav {
             max-width: 1200px;
             margin: auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
-
         .menu-icon {
             display: none;
             font-size: 24px;
             color: white;
             cursor: pointer;
         }
-
         #menu-toggle {
             display: none;
         }
-
         .nav-links {
             display: flex;
             list-style: none;
         }
-
         .nav-links li {
             margin-left: 30px;
         }
-
         .nav-links a, .lang-switch {
             color: white;
             font-weight: 500;
             cursor: pointer;
             margin-left: 20px;
         }
-
         .lang-switch {
             background: none;
             border: 1px solid white;
             padding: 5px 10px;
             border-radius: 5px;
         }
-
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: block;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                background-color: #2c3e50;
-                position: absolute;
-                top: 60px;
-                right: 0;
-                width: 200px;
-                z-index: 999;
-            }
-
-            #menu-toggle:checked + .menu-icon + .nav-links {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 10px 0;
-                text-align: right;
-                padding: 10px;
-            }
-        }
-
-        .hidden { display: none; }
-
         main {
             max-width: 1200px;
             margin: 100px auto 50px;
             padding: 0 20px;
         }
-
         h2 {
             font-size: 2rem;
             margin-bottom: 20px;
             border-bottom: 3px solid var(--primary);
             display: inline-block;
         }
-
         .about, .projects {
             margin-bottom: 60px;
         }
-
         .about {
             display: flex;
             flex-wrap: wrap;
@@ -179,24 +96,20 @@
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-
         .profile-photo img {
             width: 100%;
             max-width: 300px;
             border-radius: 12px;
             margin-right: 30px;
         }
-
         .about-content {
             flex: 1;
         }
-
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
         }
-
         .project-card {
             background-color: white;
             border-radius: 10px;
@@ -204,25 +117,20 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s;
         }
-
         .project-card:hover {
             transform: translateY(-5px);
         }
-
         .project-card img {
             width: 100%;
             height: 180px;
             object-fit: cover;
         }
-
         .project-info {
             padding: 20px;
         }
-
         .project-tags {
             margin: 10px 0;
         }
-
         .tag {
             display: inline-block;
             background-color: #ecf0f1;
@@ -232,7 +140,6 @@
             border-radius: 20px;
             font-size: 12px;
         }
-
         .project-links a {
             margin-right: 10px;
             font-size: 14px;
@@ -241,15 +148,12 @@
             padding: 6px 12px;
             border-radius: 6px;
         }
-
         footer {
             background-color: var(--dark);
             color: white;
             text-align: center;
             padding: 30px 0;
         }
-        
-        /* Modal Styles - 新增 */
         .modal {
             display: none;
             position: fixed;
@@ -261,7 +165,6 @@
             z-index: 1000;
             overflow-y: auto;
         }
-
         .modal-content {
             background-color: white;
             margin: 10% auto;
@@ -272,12 +175,10 @@
             position: relative;
             animation: modalopen 0.4s;
         }
-
         @keyframes modalopen {
             from {opacity: 0; transform: translateY(-60px);}
             to {opacity: 1; transform: translateY(0);}
         }
-
         .close {
             position: absolute;
             top: 10px;
@@ -286,28 +187,35 @@
             font-weight: bold;
             cursor: pointer;
         }
-
-        .modal-content h3 {
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .modal-content p {
-            margin-bottom: 10px;
-        }
-        
-        /* 針對手機版的調整 */
         @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: var(--dark);
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 200px;
+                z-index: 999;
+            }
+            #menu-toggle:checked + .menu-icon + .nav-links {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+                text-align: right;
+                padding: 10px;
+            }
             .modal-content {
                 margin: 20% auto;
                 width: 90%;
-                padding: 15px;
             }
-            
             .about {
                 flex-direction: column;
             }
-            
             .profile-photo img {
                 margin-right: 0;
                 margin-bottom: 20px;
@@ -331,7 +239,7 @@
         </nav>
     </header>
 
-   <main>
+    <main>
         <section id="about" class="about">
             <div class="profile-photo">
                 <img src="profile.jpg" alt="Profile Photo">
@@ -340,86 +248,83 @@
                 <h2 data-en="About Me" data-zh="關於我">About Me</h2>
                 <p data-en="Hello! I am a graduate student at National Taipei University, a tech enthusiast, and a fitness lover.
 In recent years, I have developed projects involving AI for breast cancer detection, chatbots for traffic updates, language models for cultural exchange, and network management for retail companies. I strive to create valuable digital products through technology and communication.
-Besides work, I enjoy fitness, gaming, and music, which inspire my creativity
-"
+Besides work, I enjoy fitness, gaming, and music, which inspire my creativity"
                    data-zh="您好！我是國立臺北大學資訊管理所的學生，同時是一位資訊人與健身愛好者，歡迎來到我的個人網站。
 在過去的幾年中，我參與了多個專案的開發，包括運用電子視覺與人工智慧辨識乳癌影像、應用於路況及時回覆的對話式機器人、應用大型語言模型輔助交換學生語言與文化推展、知名零售業網路管理與設計佈線圖。我相信透過技術與溝通可以改變世界，並致力於創造有價值的數位產品。
-除了技術開發，我也熱愛健身、遊戲和音樂，這些活動幫助我保持創造力並獲得新的靈感。
-">
+除了技術開發，我也熱愛健身、遊戲和音樂，這些活動幫助我保持創造力並獲得新的靈感。">
                    Hello! I am a graduate student at National Taipei University, a tech enthusiast, and a fitness lover.
 In recent years, I have developed projects involving AI for breast cancer detection, chatbots for traffic updates, language models for cultural exchange, and network management for retail companies. I strive to create valuable digital products through technology and communication.
 Besides work, I enjoy fitness, gaming, and music, which inspire my creativity
-</p>
+                </p>
             </div>
         </section>
 
         <section id="projects">
-    <h2 data-en="Projects" data-zh="專案作品">Projects</h2>
-    <div class="projects-grid">
-        <div class="project-card">
-            <img src="gra_pic.png" alt="Project 1">
-            <div class="project-info">
-                <h3 data-en="Where is the Breast Cancer?" data-zh="癌 - 乳在哪裡">Where is the Breast Cancer?</h3>
-                <div class="project-tags">
-                    <span class="tag">PyTorch</span><span class="tag">VB.NET</span><span class="tag">MySQL</span>
+            <h2 data-en="Projects" data-zh="專案作品">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="gra_pic.png" alt="Project 1">
+                    <div class="project-info">
+                        <h3 data-en="Where is the Breast Cancer?" data-zh="癌 - 乳在哪裡">Where is the Breast Cancer?</h3>
+                        <div class="project-tags">
+                            <span class="tag">PyTorch</span><span class="tag">VB.NET</span><span class="tag">MySQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="javascript:void(0)" onclick="openModal('modal1')">Details</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-links">
-                    <a href="javascript:void(0)" onclick="openModal('modal1')">Details</a>
+                <div class="project-card">
+                    <img src="ai_bot.png" alt="Project 2">
+                    <div class="project-info">
+                        <h3 data-en="Smart Traffic Language Query Agent" data-zh="智慧交通語言查詢代理系統">Smart Traffic Language Query Agent</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span><span class="tag">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="javascript:void(0)" onclick="openModal('modal2')">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="CroissantGPT_logo.png" alt="Project 3">
+                    <div class="project-info">
+                        <h3 data-en="CroissantGPT" data-zh="CroissantGPT">CroissantGPT</h3>
+                        <div class="project-tags">
+                            <span class="tag">Python</span><span class="tag">GPT-4o-mini</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://s95026021.github.io/croissantgpt/" target="_blank">Details</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="project-card">
-            <img src="ai_bot.png" alt="Project 2">
-            <div class="project-info">
-                <h3 data-en="Smart Traffic Language Query Agent" data-zh="智慧交通語言查詢代理系統">Smart Traffic Language Query Agent</h3>
-                <div class="project-tags">
-                    <span class="tag">Python</span><span class="tag">NLP</span>
-                </div>
-                <div class="project-links">
-                    <a href="javascript:void(0)" onclick="openModal('modal2')">Details</a>
-                </div>
-            </div>
-        </div>
-        <div class="project-card">
-            <img src="CroissantGPT_logo.png" alt="Project 3">
-            <div class="project-info">
-                <h3 data-en="CroissantGPT" data-zh="CroissantGPT">CroissantGPT</h3>
-                <div class="project-tags">
-                    <span class="tag">Python</span><span class="tag">GPT-4o-mini</span>
-                </div>
-                <div class="project-links">
-<a href="https://s95026021.github.io/croissantgpt/" target="_blank">Details</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        </section>
 
-<!-- Modals with bilingual content -->
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal1')">&times;</span>
-        <h3 data-en="Where is the Breast Cancer?" data-zh="癌 - 乳在哪裡">Where is the Breast Cancer?</h3>
-        <p data-en="This project aims to assist in medical image diagnosis using deep learning technology, based on mammography data. It constructs an auxiliary diagnosis system capable of automatically classifying breast cancer images. The dataset includes 9588 mammograms from Taipei Medical University Hospital, covering various stages and BI-RADS scores."
-           data-zh="本專題致力於透過深度學習技術協助醫療影像診斷，以乳癌X光攝影為資料來源，建構一套能夠自動判別乳癌影像等級的輔助診斷系統。資料來源來自台北醫學大學附設醫院，共計9588張乳房X光片，涵蓋不同乳癌分期與BI-RADS等級。">
-           This project aims to assist in medical image diagnosis using deep learning technology...</p>
-        <p data-en="Image processing involves format conversion, black border removal, median filtering, CLAHE contrast enhancement, and data augmentation through rotation and flipping."
-           data-zh="影像處理階段：進行圖片轉檔、去除黑邊、中值濾波、CLAHE對比強化、以及旋轉與翻轉的資料擴增，以提升模型訓練品質。">
-           Image processing involves format conversion...</p>
-        <p data-en="Model training uses transfer learning with ResNet50, achieving a final accuracy of around 61.2%. The system integrates backend image processing and frontend prediction, with the goal of becoming a useful tool in early breast cancer screening."
-           data-zh="模型訓練與判讀階段：採用ResNet50遷移學習架構，進行影像分類訓練，模型最終分類準確率達約61.2%。系統包含後端圖像處理功能與前台分級預測模組，整合至可操作的介面平台，期望未來能作為醫療決策的輔助工具，提升早期乳癌篩檢的效率與精準度。">
-           Model training uses transfer learning with ResNet50...</p>
-    </div>
-</div>
-<div id="modal2" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal('modal2')">&times;</span>
-        <h3 data-en="Smart Traffic Language Query Agent" data-zh="智慧交通語言查詢代理系統">Smart Traffic Language Query Agent</h3>
-        <p data-en="This project develops an intelligent traffic query system using large language models (LLMs) and the LINE Bot platform. It combines natural language processing (NLP) with the TDX traffic data API, allowing users to query real-time traffic information through conversation. This enhances information accessibility and responsiveness in smart cities."
-           data-zh="本專案旨在開發一套基於大型語言模型（LLMs）與LINE Bot平台的智慧交通查詢系統，結合自然語言處理（NLP）與TDX交通資料API，協助民眾以對話方式查詢即時路況，提升智慧城市中交通資訊的可近性與反應速度。">
-           This project develops an intelligent traffic query system using large language models...</p>
-    </div>
-</div>
+        <div id="modal1" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal1')">&times;</span>
+                <h3 data-en="Where is the Breast Cancer?" data-zh="癌 - 乳在哪裡">Where is the Breast Cancer?</h3>
+                <p data-en="This project aims to assist in medical image diagnosis using deep learning technology, based on mammography data. It constructs an auxiliary diagnosis system capable of automatically classifying breast cancer images. The dataset includes 9588 mammograms from Taipei Medical University Hospital, covering various stages and BI-RADS scores."
+                   data-zh="本專題致力於透過深度學習技術協助醫療影像診斷，以乳癌X光攝影為資料來源，建構一套能夠自動判別乳癌影像等級的輔助診斷系統。資料來源來自台北醫學大學附設醫院，共計9588張乳房X光片，涵蓋不同乳癌分期與BI-RADS等級。">
+                   This project aims to assist in medical image diagnosis using deep learning technology...</p>
+                <p data-en="Image processing involves format conversion, black border removal, median filtering, CLAHE contrast enhancement, and data augmentation through rotation and flipping."
+                   data-zh="影像處理階段：進行圖片轉檔、去除黑邊、中值濾波、CLAHE對比強化、以及旋轉與翻轉的資料擴增，以提升模型訓練品質。">
+                   Image processing involves format conversion...</p>
+                <p data-en="Model training uses transfer learning with ResNet50, achieving a final accuracy of around 61.2%. The system integrates backend image processing and frontend prediction, with the goal of becoming a useful tool in early breast cancer screening."
+                   data-zh="模型訓練與判讀階段：採用ResNet50遷移學習架構，進行影像分類訓練，模型最終分類準確率達約61.2%。系統包含後端圖像處理功能與前台分級預測模組，整合至可操作的介面平台，期望未來能作為醫療決策的輔助工具，提升早期乳癌篩檢的效率與精準度。">
+                   Model training uses transfer learning with ResNet50...</p>
+            </div>
+        </div>
+        <div id="modal2" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('modal2')">&times;</span>
+                <h3 data-en="Smart Traffic Language Query Agent" data-zh="智慧交通語言查詢代理系統">Smart Traffic Language Query Agent</h3>
+                <p data-en="This project develops an intelligent traffic query system using large language models (LLMs) and the LINE Bot platform. It combines natural language processing (NLP) with the TDX traffic data API, allowing users to query real-time traffic information through conversation. This enhances information accessibility and responsiveness in smart cities."
+                   data-zh="本專案旨在開發一套基於大型語言模型（LLMs）與LINE Bot平台的智慧交通查詢系統，結合自然語言處理（NLP）與TDX交通資料API，協助民眾以對話方式查詢即時路況，提升智慧城市中交通資訊的可近性與反應速度。">
+                   This project develops an intelligent traffic query system using large language models...</p>
+            </div>
+        </div>
 
         <section id="contact">
             <h2 data-en="Contact" data-zh="聯絡我">Contact</h2>
@@ -433,42 +338,16 @@ Besides work, I enjoy fitness, gaming, and music, which inspire my creativity
     </footer>
 
     <script>
-    function openModal(modalId) {
-        document.getElementById(modalId).style.display = "block";
-    }
-
-    function closeModal(modalId) {
-        document.getElementById(modalId).style.display = "none";
-    }
-
-    // 點擊modal外部區域關閉modal
-    window.onclick = function(event) {
-        const modals = document.getElementsByClassName('modal');
-        for (let i = 0; i < modals.length; i++) {
-            if (event.target == modals[i]) {
-                modals[i].style.display = "none";
-            }
-        }
-    }
-        function switchLang(lang) {
-            const elements = document.querySelectorAll('[data-en]');
-            elements.forEach(el => {
-                el.textContent = el.getAttribute(`data-${lang}`);
-            });
-        }
-
-        // 新增 Modal 相關函數
         function openModal(modalId) {
             document.getElementById(modalId).style.display = "block";
-            document.body.style.overflow = "hidden"; // 防止背景滾動
+            document.body.style.overflow = "hidden";
         }
 
         function closeModal(modalId) {
             document.getElementById(modalId).style.display = "none";
-            document.body.style.overflow = "auto"; // 恢復背景滾動
+            document.body.style.overflow = "auto";
         }
 
-        // 點擊 modal 外部區域關閉 modal
         window.onclick = function(event) {
             const modals = document.getElementsByClassName('modal');
             for (let i = 0; i < modals.length; i++) {
@@ -479,7 +358,14 @@ Besides work, I enjoy fitness, gaming, and music, which inspire my creativity
             }
         }
 
-        window.onload = function () {
+        function switchLang(lang) {
+            const elements = document.querySelectorAll('[data-en]');
+            elements.forEach(el => {
+                el.textContent = el.getAttribute(`data-${lang}`);
+            });
+        }
+
+        window.onload = function() {
             const userLang = navigator.language || navigator.userLanguage;
             if (userLang.startsWith('zh')) {
                 switchLang('zh');
