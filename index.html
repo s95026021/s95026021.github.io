@@ -210,6 +210,71 @@
             text-align: center;
             padding: 30px 0;
         }
+        
+        /* Modal Styles - 新增 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+            animation: modalopen 0.4s;
+        }
+
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-60px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .modal-content p {
+            margin-bottom: 10px;
+        }
+        
+        /* 針對手機版的調整 */
+        @media (max-width: 768px) {
+            .modal-content {
+                margin: 20% auto;
+                width: 90%;
+                padding: 15px;
+            }
+            
+            .about {
+                flex-direction: column;
+            }
+            
+            .profile-photo img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -317,8 +382,6 @@ Besides work, I enjoy fitness, gaming, and music, which inspire my creativity
            This project develops an intelligent traffic query system using large language models...</p>
     </div>
 </div>
-</div>
-        <!-- For brevity, I’ll apply multilingual translation to the rest if you confirm this structure works for you. -->
 
         <section id="contact">
             <h2 data-en="Contact" data-zh="聯絡我">Contact</h2>
@@ -337,6 +400,28 @@ Besides work, I enjoy fitness, gaming, and music, which inspire my creativity
             elements.forEach(el => {
                 el.textContent = el.getAttribute(`data-${lang}`);
             });
+        }
+
+        // 新增 Modal 相關函數
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+            document.body.style.overflow = "hidden"; // 防止背景滾動
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+            document.body.style.overflow = "auto"; // 恢復背景滾動
+        }
+
+        // 點擊 modal 外部區域關閉 modal
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target == modals[i]) {
+                    modals[i].style.display = "none";
+                    document.body.style.overflow = "auto";
+                }
+            }
         }
 
         window.onload = function () {
